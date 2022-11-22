@@ -11,7 +11,7 @@ interface ProductProps {
   product: {
     id: string
     name: string
-    imageUrl: string
+    imageUrl?: string
     price: string
     description: string
     defaultPriceId: string
@@ -47,7 +47,7 @@ export default function Product({ product }: ProductProps) {
 
       <ProductContainer>
         <ImageContainer>
-          <Image src={product.imageUrl} width={520} height={480} alt="" />
+          <Image src={product?.imageUrl} width={520} height={480} alt="" />
         </ImageContainer>
 
         <ProductDetails>
@@ -88,7 +88,7 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({ para
       product: {
         id: product.id,
         name: product.name,
-        imageUrl: product.images[0],
+        imageUrl: product?.images[0],
         price: new Intl.NumberFormat('pt-BR', {
           style: 'currency',
           currency: 'BRL'
